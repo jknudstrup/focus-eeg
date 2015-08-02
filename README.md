@@ -11,3 +11,5 @@ If you follow the instructions outlined in this document, you can train your own
 * *Muse SDK:* This will have all the lovely stuff you'll want to run the Muse on OSX. Speaking of which:
 
 * *OSX:* If you fix the paths and get all the dependencies right, you might be able to get this going on Windows or Linux, I just wouldn't know how.
+
+* *pyliblo:* This is needed for the OSC server. Generally, you're going to want to follow the procedures and install the dependencies for everything [here](https://sites.google.com/a/interaxon.ca/muse-developer-site/developer-getting-started-guide).
