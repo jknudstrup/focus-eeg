@@ -4,6 +4,8 @@ This is a classifier for attentive states that uses the Muse portable EEG headse
 
 If you follow the instructions outlined in this document, you can train your own classifier, potentially with far greater accuracy than off-the-shelf algorithms. Some of this process will seem a bit more... involved than I'd like it to be. Interaxon is (purportedly) working on a port for LibMuse to desktop OS', so hopefully I'll be able to correct that soon.
 
+![muse](https://github.com/jknudstrup/focus-eeg/blob/master/assets/muse.jpg?raw=true)
+
 ## Dependencies
 
 * *Muse Headset:* This headset is required to interact with the Focus EEG Classifier. In principle, any kind of EEG would work with my methods, but you'd need to coerce the recordings into the right format.
