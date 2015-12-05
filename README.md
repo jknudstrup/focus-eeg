@@ -26,6 +26,9 @@ From a high level perspective, there are three phases: gathering training data, 
 4. Run training script to build predictive model
 5. Run OSC server to generate predictions on incoming Muse stream
 
+See the following diagram:
+![flowchart](https://github.com/jknudstrup/focus-eeg/blob/master/assets/flowchart.png?raw=true)
+
 ## Instructions
 
 Clone this repo and navigate to its folder in Terminal, then do the following:
@@ -38,6 +41,8 @@ Clone this repo and navigate to its folder in Terminal, then do the following:
     * Start labeler.py
     * Begin some attention-taxing activity (listen to educational podcasts, Coursera lectures, etc.)
     * Hit a key whenever you notice yourself losing focus.
+    * Consider the following model for task selection:
+    ![attention](https://github.com/jknudstrup/focus-eeg/blob/master/assets/attention.png?raw=true)
 
 3. When you're satisfied with your training session, or get too tired to continue, hit ctrl-c to kill the Muse player and Esc to close labeler.py.
 
