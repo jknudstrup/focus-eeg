@@ -85,8 +85,8 @@ def fit_model(X, y):
     params = find_best_params(X, y)
     if 'gamma' in params:
         clf = SVC(C=params['C'], kernel=params['kernel'],
-                  gamma=params['gamma'])
+                  gamma=params['gamma'], probability=True)
     else:
-        clf = SVC(C=params['C'], kernel=params['kernel'])
+        clf = SVC(C=params['C'], kernel=params['kernel'], probability=True)
     clf.fit(X, y)
     return clf

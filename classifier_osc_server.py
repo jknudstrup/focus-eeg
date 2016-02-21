@@ -64,7 +64,8 @@ class MuseServer(ServerThread):
         self.current_row = pd.Series(self.current_row).reshape(1, -1) #Gotta do this now apparently
         #print self.current_row
         #print clf.predict(self.current_row)
-        print clf.decision_function(self.current_row)
+        #print clf.decision_function(self.current_row)
+        clf.predict_proba(self.current_row)
         condition_names = {1 : "Focused.", 2 : "Zoning Out!", 3 : "Wavering..."}
         # prediction = clf.predict(self.current_row)[0]
         # score = clf.decision_function(self.current_row)[0][0]
