@@ -96,7 +96,6 @@ class MuseServer(ServerThread):
         #time.sleep(1)
         data = s.recv(1024)
         print 'Received', repr(data)
-        n +=1
 
         self.current_row = False
         pass
