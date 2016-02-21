@@ -34,9 +34,9 @@ See the following diagram:
 Clone this repo and navigate to its folder in Terminal, then do the following:
 
 1. Connect the Muse and begin recording:
-    * Entering <muse-io --device Muse --osc osc.udp://localhost:5001,osc.udp://localhost:5002> into the terminal (minus angle brackets) should work. Make sure ports 5001 and 5002 are available.
+    * Entering "muse-io --device Muse --osc osc.udp://localhost:5001,osc.udp://localhost:5002" into the terminal (minus quotes) should work. Make sure ports 5001 and 5002 are available.
     * Ensure proper muse fit and connection strength.
-    * This is a long one: paste <muse-player -i /muse/elements/delta_absolute /muse/elements/theta_absolute /muse/elements/alpha_absolute /muse/elements/beta_absolute /muse/elements/is_good /muse/elements/blink /muse/elements/jaw_clench -l udp:5002 -C Recordings/Unlabeled/$(date +%s).csv> and run it. Your streaming EEG data will start recording on a .csv file.
+    * This is a long one: paste "muse-player -i /muse/elements/delta_absolute /muse/elements/theta_absolute /muse/elements/alpha_absolute /muse/elements/beta_absolute /muse/elements/is_good /muse/elements/blink /muse/elements/jaw_clench -l udp:5002 -C Recordings/Unlabeled/$(date +%s).csv" (again, delete quotes) and run it. Your streaming EEG data will start recording on a .csv file.
 2. Start labeler script and run experiment:
     * Start labeler.py
     * Begin some attention-taxing activity (listen to educational podcasts, Coursera lectures, etc.)
