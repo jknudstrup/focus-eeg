@@ -1,7 +1,15 @@
+# import os
+# import sys
+# #reload(sys)  
+# import imp
+# imp.reload(sys)
+# sys.setdefaultencoding('Cp1252')
+
 from liblo import *
 import sys
 import time
 import pickle
+clf = pickle.load( open("model.pkl", "rb" ) ) #choose appro
 import numpy as np
 import pandas as pd
 
@@ -46,19 +54,29 @@ class MuseServer(ServerThread):
             self.current_row += x
         assert len(self.current_row) == 16
 
-        row = pd.Series(self.current_row)
-        condition_names = {1 : "Focused.", 2 : "Zoning Out!", 3 : "Wavering..."}
-        prediction = clf.predict(self.current_row)[0]
-        score = clf.decision_function(self.current_row)[0][0]
-        if (score > -3) and (score < 0): 
-            prediction = 3
-        name = condition_names[prediction], str(score)
+        #For some godawful reason the following must now be done:
+        #self.current_row = np.array(self.current_row).reshape(1, -1)
+        #print row #Delete me
 
-        if name[0] != "Focused.":
-            print name
-        else:
-            print(" ")
-            print(" ")
+        #print self.current_row
+        #break #Really delete me
+
+        self.current_row = pd.Series(self.current_row).reshape(1, -1) #Gotta do this now apparently
+        #print self.current_row
+        #print clf.predict(self.current_row)
+        print clf.decision_function(self.current_row)
+        condition_names = {1 : "Focused.", 2 : "Zoning Out!", 3 : "Wavering..."}
+        # prediction = clf.predict(self.current_row)[0]
+        # score = clf.decision_function(self.current_row)[0][0]
+        # if (score > -3) and (score < 0): 
+        #     prediction = 3
+        # name = condition_names[prediction], str(score)
+
+        # if name[0] != "Focused.":
+        #     print(name)
+        # else:
+        #     print(" ")
+        #     print(" ")
         self.current_row = False
         pass
 
@@ -69,13 +87,13 @@ class MuseServer(ServerThread):
 
 try:
     server = MuseServer()
-except ServerError, err:
-    print str(err)
+except (ServerError, err):
+    print(str(err))
     sys.exit()
 
 server.start()
 
 if __name__ == "__main__":
-    clf = pickle.load( open("models/model.pkl", "rb" ) ) #choose appropriate filename
+    #clf = pickle.load( open("model.pkl", "rb" ) ) #choose appropriate filename
     while 1:
         time.sleep(1)
