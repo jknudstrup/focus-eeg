@@ -5,6 +5,7 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.svm import SVC
 import settings
+import prepare
 
 
 def make_training_set(df):
@@ -22,7 +23,7 @@ def make_training_set(df):
     X.index = range(length)
     y.index = range(length)
 
-    most_recent = get_most_recent()
+    most_recent = prepare.get_most_recent()
     X.to_csv(settings.CLEANED_PATH + 'X' + most_recent)
     y.to_csv(settings.CLEANED_PATH + 'y' + most_recent)
 
