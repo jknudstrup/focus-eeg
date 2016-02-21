@@ -66,6 +66,7 @@ class MuseServer(ServerThread):
         #print clf.predict(self.current_row)
         #print clf.decision_function(self.current_row)
         print clf.predict_proba(self.current_row)
+        prediction = clf.predict_probab(self.current_row)[0][0]
         condition_names = {1 : "Focused.", 2 : "Zoning Out!", 3 : "Wavering..."}
         # prediction = clf.predict(self.current_row)[0]
         # score = clf.decision_function(self.current_row)[0][0]
@@ -78,6 +79,27 @@ class MuseServer(ServerThread):
         # else:
         #     print(" ")
         #     print(" ")
+
+        # Echo client program
+        import socket
+        import random
+        import time
+
+        HOST = '10.3.17.49'    # The remote host
+        PORT = 6011              # The same port as used by the server
+        n = 1
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((HOST, PORT))
+        rand_num = (random.random())
+        x = str(prediction) + '\r\n'
+        s.send(x)
+        print x
+        #time.sleep(1)
+        data = s.recv(1024)
+        print 'Received', repr(data)
+        n +=1
+        s.close()
+
         self.current_row = False
         pass
 
