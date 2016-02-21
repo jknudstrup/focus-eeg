@@ -13,6 +13,14 @@ clf = pickle.load( open("model.pkl", "rb" ) ) #choose appro
 import numpy as np
 import pandas as pd
 
+import socket
+import random
+
+HOST = '10.3.17.49'    # The remote host
+PORT = 6011              # The same port as used by the server
+n = 1
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((HOST, PORT))
 
 class MuseServer(ServerThread):
     #listen for messages on port 5001
@@ -81,15 +89,6 @@ class MuseServer(ServerThread):
         #     print(" ")
 
         # Echo client program
-        import socket
-        import random
-        import time
-
-        HOST = '10.3.17.49'    # The remote host
-        PORT = 6011              # The same port as used by the server
-        n = 1
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((HOST, PORT))
         rand_num = (random.random())
         x = str(prediction) + '\r\n'
         s.send(x)
@@ -98,7 +97,6 @@ class MuseServer(ServerThread):
         data = s.recv(1024)
         print 'Received', repr(data)
         n +=1
-        #s.close()
 
         self.current_row = False
         pass
