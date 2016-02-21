@@ -76,6 +76,6 @@ except ServerError, err:
 server.start()
 
 if __name__ == "__main__":
-    clf = pickle.load( open("med1.pkl", "rb" ) ) #choose appropriate filename
+    clf = pickle.load( open("models/model.pkl", "rb" ) ) #choose appropriate filename
     while 1:
         time.sleep(1)

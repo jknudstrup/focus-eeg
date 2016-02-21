@@ -17,7 +17,7 @@ def prepro_last():
 def train_build(df):
     """Makes a training set ready to be fitted."""
     print("Constructing training set...")
-    recent_labels = pr.labels.get_last_keypresses()
+    recent_labels = pr.labels.get_last_keypresses() #List of strings
     labeled_df = pr.labels.apply_labels_all(df, recent_labels)
     X, y = pr.build_model.make_training_set(labeled_df)
 
@@ -28,7 +28,7 @@ def fit_store(X, y):
     """Finds an optimal model, stores it in models folder."""
     print("Fitting model to training set...")
     model = pr.build_model.fit_model(X, y)
-    pickle.dump(model, open("models/" + get_most_recent() + ".pkl", "wb"))
+    pickle.dump(model, open("models/" + "model" + ".pkl", "wb"))
 
 
 def main():
