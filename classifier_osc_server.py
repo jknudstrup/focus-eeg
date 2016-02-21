@@ -66,7 +66,7 @@ class MuseServer(ServerThread):
         #print clf.predict(self.current_row)
         #print clf.decision_function(self.current_row)
         print clf.predict_proba(self.current_row)
-        prediction = clf.predict_probab(self.current_row)[0][0]
+        prediction = clf.predict_proba(self.current_row)[0][0]
         condition_names = {1 : "Focused.", 2 : "Zoning Out!", 3 : "Wavering..."}
         # prediction = clf.predict(self.current_row)[0]
         # score = clf.decision_function(self.current_row)[0][0]
